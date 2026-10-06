@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://bo6jj8cnypgrr"]
+
+[ext_resource type="Texture2D" uid="uid://41800ccxbq1d" path="res://assets/shadow.png" id="1_kww4v"]
+[ext_resource type="Script" path="res://scripts/objects/player.gd" id="1_w4mf0"]
+[ext_resource type="Texture2D" uid="uid://chuyaaddugr1n" path="res://assets/frog.png" id="2_p4hwm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g05i0"]
+size = Vector2(6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5s7t"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk5cf"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jui8j"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6man"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8kku"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky8v3"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4d2o"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo25n"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueiwo"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc1b6"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_copgm"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6okr"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mux66"]
+atlas = ExtResource("2_p4hwm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kroc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5s7t")
+}],
+"loop": false,
+"name": &"backward_idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk5cf")
+}],
+"loop": false,
+"name": &"backward_leap",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jui8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6man")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8kku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky8v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4d2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo25n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueiwo")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc1b6")
+}],
+"loop": false,
+"name": &"forward_idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_copgm")
+}],
+"loop": false,
+"name": &"forward_leap",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6okr")
+}],
+"loop": false,
+"name": &"sideway_idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mux66")
+}],
+"loop": false,
+"name": &"sideway_leap",
+"speed": 1.0
+}]
+
+[node name="Player" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_w4mf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g05i0")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.588235)
+texture = ExtResource("1_kww4v")
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0kroc")
+animation = &"forward_idle"
+autoplay = "forward_idle"
+offset = Vector2(0, -4)

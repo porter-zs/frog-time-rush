@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceidw1d306y47"]
+
+[ext_resource type="Script" path="res://scripts/objects/obstacles/vehicle.gd" id="1_5ipqa"]
+[ext_resource type="Texture2D" uid="uid://41800ccxbq1d" path="res://assets/shadow.png" id="1_hwp4a"]
+[ext_resource type="Texture2D" uid="uid://872b000qoox4" path="res://assets/vehicles.png" id="2_r1qps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bod3k"]
+size = Vector2(14, 14)
+
+[node name="Vehicle" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_5ipqa")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.588235)
+scale = Vector2(1.6875, 1)
+texture = ExtResource("1_hwp4a")
+offset = Vector2(0.5, -1)
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_r1qps")
+offset = Vector2(0, -4)
+hframes = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bod3k")
+
+[node name="DetectObstacles" type="RayCast2D" parent="."]
+target_position = Vector2(-24, 0)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false

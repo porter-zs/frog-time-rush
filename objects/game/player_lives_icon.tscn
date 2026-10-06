@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtmmu540bkrbf"]
+
+[ext_resource type="Texture2D" uid="uid://jo4l2iecq5lx" path="res://assets/lives.png" id="1_e46rc"]
+
+[node name="LivesIcon" type="TextureRect"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_e46rc")
+stretch_mode = 3

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dig1cmsy0kqgf"]
+
+[ext_resource type="Script" path="res://scripts/objects/collections/tile_spawner.gd" id="1_1hr08"]
+
+[node name="TileSpawner" type="Node2D"]
+script = ExtResource("1_1hr08")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

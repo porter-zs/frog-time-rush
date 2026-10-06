@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6lpaw8j5shsd"]
+
+[ext_resource type="Script" path="res://scripts/objects/obstacles/turtle.gd" id="1_612es"]
+[ext_resource type="PackedScene" uid="uid://bjjp150yqmsy5" path="res://objects/collections/female_frog.tscn" id="2_ew2t8"]
+[ext_resource type="Texture2D" uid="uid://b55a4nbetbau6" path="res://assets/turtle.png" id="2_rhelf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq4hn"]
+size = Vector2(48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7xh1"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8tyc"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3t4n"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffw54"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsh"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 32, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ouh5"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spech"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgpjc"]
+atlas = ExtResource("2_rhelf")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbi6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7xh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8tyc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3t4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffw54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hvsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ouh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spech")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgpjc")
+}],
+"loop": false,
+"name": &"submerge",
+"speed": 5.0
+}]
+
+[node name="Turtle" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_612es")
+female_frog_scene = ExtResource("2_ew2t8")
+speed = 40.0
+
+[node name="DetectionBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dq4hn")
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nbi6t")
+animation = &"submerge"
+autoplay = "default"
+
+[node name="DetectObstacles" type="RayCast2D" parent="."]
+target_position = Vector2(-32, 0)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="SubmergeTimer" type="Timer" parent="."]

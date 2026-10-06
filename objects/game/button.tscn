@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbp83iq61k2px"]
+
+[ext_resource type="Theme" uid="uid://s7670ca8cp0h" path="res://resources/default_theme.tres" id="1_prnjp"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+theme = ExtResource("1_prnjp")
+text = "a"
+icon_alignment = 1

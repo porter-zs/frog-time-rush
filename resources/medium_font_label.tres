@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dul8gufd1s0q"]
+
+[ext_resource type="FontFile" uid="uid://sof8gowb6lib" path="res://fonts/yours-truly-font.ttf" id="1_a7f7r"]
+
+[resource]
+font = ExtResource("1_a7f7r")
+font_size = 12
+outline_size = 6
+outline_color = Color(0.184314, 0.145098, 0.337255, 1)
